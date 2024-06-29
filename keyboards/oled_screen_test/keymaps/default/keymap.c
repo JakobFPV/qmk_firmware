@@ -97,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_ortho_4x3(
         KC_MUTE,   KC_VOLD,   KC_VOLU,   TO(1),
         KC_MPRV,   KC_MPLY,   KC_MNXT,   OPENSPOTIFY,
-        OPENEXPLORER,   OPENBRAVE,   OPENVS,   TO(3)
+        TO(4),   OPENBRAVE,   OPENVS,   TO(3)
     ),
 
     [1] = LAYOUT_ortho_4x3(
@@ -112,13 +112,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_3,   KC_3,   KC_3,   KC_3
     ),
 
-
-
-
     [3] = LAYOUT_ortho_4x3(
         TO(0),   TO(0),   TO(0),   TO(0),
         TO(0),   TO(0),   TO(0),   TO(0),
         TO(0),   TO(0),   TO(0),   KC_SLEP
+    )
+
+    [4] = LAYOUT_ortho_4x3(
+        TO(0),   TO(0),   TO(0),   TO(0),
+        TO(0),   TO(0),   TO(0),   TO(0),
+        TO(5),   TO(0),   TO(0),   TO(0)
+    )
+
+    [5] = LAYOUT_ortho_4x3(
+        KC_1,   KC_2,   KC_3,   KC_4,
+        KC_Q,   KC_W,   KC_E,   KC_F,
+        KC_A,   KC_S,   KC_D,   KC_SPACE
     )
 
 };
