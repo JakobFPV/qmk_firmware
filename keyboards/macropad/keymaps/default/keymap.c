@@ -4,7 +4,9 @@ enum custom_keycodes {
     OPENSPOTIFY,
     OPENBRAVE,
     OPENEXPLORER,
-    OPENVS
+    OPENVS,
+    SPEAKERS,
+    HEADPHONES
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -14,7 +16,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 SEND_STRING(SS_LWIN("r"));
                 _delay_ms(250);
-                SEND_STRING("spotify" SS_TAP(X_ENTER));  // Corrected the string
+                SEND_STRING("spotify" SS_TAP(X_ENTER));
             }
             break;
 
@@ -22,7 +24,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 SEND_STRING(SS_LWIN("r"));
                 _delay_ms(250);
-                SEND_STRING("brave" SS_TAP(X_ENTER));  // Corrected the string
+                SEND_STRING("brave" SS_TAP(X_ENTER));
             }
             break;
 
@@ -30,7 +32,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 SEND_STRING(SS_LWIN("r"));
                 _delay_ms(250);
-                SEND_STRING("explorer" SS_TAP(X_ENTER));  // Corrected the string
+                SEND_STRING("explorer" SS_TAP(X_ENTER));
             }
             break;
 
@@ -38,12 +40,36 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 SEND_STRING(SS_LWIN("r"));
                 _delay_ms(250);
-                SEND_STRING("code" SS_TAP(X_ENTER));  // Corrected the string
+                SEND_STRING("code" SS_TAP(X_ENTER));
+            }
+            break;
+
+        case SPEAKERS:
+            if (record->event.pressed) {
+                register_code(KC_LCTL);
+                register_code(KC_LSFT);
+                register_code(KC_1);
+
+                unregister_code(KC_1);
+                unregister_code(KC_LSFT);   
+                unregister_code(KC_LCTL);
+            }
+            break;
+
+        case HEADPHONES:
+            if (record->event.pressed) {
+                register_code(KC_LCTL);
+                register_code(KC_LSFT);
+                register_code(KC_2);
+
+                unregister_code(KC_2);
+                unregister_code(KC_LSFT);   
+                unregister_code(KC_LCTL);
             }
             break;
     }
 
-    return true;  // Moved return true; outside the switch case
+    return true;
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -51,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_ortho_4x3(
         KC_MUTE,   KC_VOLD,   KC_VOLU,   TO(1),
         KC_MPRV,   KC_MPLY,   KC_MNXT,   OPENSPOTIFY,
-        TO(3),   OPENBRAVE,   OPENVS,   TO(3)
+        TO(3),   SPEAKERS,   HEADPHONES,   TO(3)
     ),
 
     [1] = LAYOUT_ortho_4x3(
